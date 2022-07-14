@@ -2,7 +2,6 @@ import os
 import re
 from select import select
 import streamlit as st
-from streamlit_ace import st_ace
 import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
