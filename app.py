@@ -46,9 +46,8 @@ st.markdown("---")
 # information about the Datatype
 if st.button('Datatypes: ',key=0):
     dit = read_data.info()
-    # dit = dit.to_text(index=False).encode('utf-8')
-    dit = dit.to_text(index=False).encode('utf-8')
-    st.download_button(label="Download data as CSV",data= dit,file_name='datainfo.csv',mime='text')
+    sys.stdout = dit
+    st.write(sys.stdout)
 st.markdown("---")
 
 
