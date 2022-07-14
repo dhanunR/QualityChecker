@@ -64,7 +64,7 @@ if st.button('Total Number of Unique Values:',key=1):
 st.markdown("---")
 
 #Checking for Null Values : 
-if st.button('Checking for Missing Values',key=2): 
+if st.button(label='Checking for Missing Values',key=2): 
     null_values = read_data.isnull().sum()/len(read_data)*100
     missing = null_values.sum().round(2)
     st.write(read_data.isnull().sum())
@@ -79,8 +79,8 @@ if st.button('Checking for Missing Values',key=2):
 if st.button(label='Click to Remove Null Values',key=3):
         nvr = read_data.dropna
         # Download option
-        nvr = nvr.to_csv(index=False).encode('utf-8')
-        st.download_button(label="Download data as CSV",data= nvr,file_name='NullValuesRemoved.csv',mime='text/csv')
+        snvr = nvr.to_csv(index=False).encode('utf-8')
+        st.download_button(label="Download data as CSV",data= snvr,file_name='NullValuesRemoved.csv',mime='text/csv')
 if st.button(label='Click to Remove Null Values From Specific Column',key=4):
         column = read_data.columns
         option = st.selectbox("Select the Column",column)
