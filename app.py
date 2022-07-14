@@ -45,11 +45,11 @@ st.write(read_data.describe())
 st.markdown("---")
 
 # information about the Datatype
-if st.button('Datatypes: ',key=0):
-    dit = read_data.info()
-    sys.stdout = dit
-    st.write(sys.stdout)
-st.markdown("---")
+#if st.button('Datatypes: ',key=0):
+ #   dit = read_data.info()
+  #  sys.stdout = dit
+  #  st.write(sys.stdout)
+#st.markdown("---")
 
 
 
