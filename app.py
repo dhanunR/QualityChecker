@@ -47,7 +47,7 @@ st.markdown("---")
 if st.button('Datatypes: ',key=0):
     dit = read_data.info()
     # dit = dit.to_text(index=False).encode('utf-8')
-    st.json(dit)
+    st.dataframe(dit)
 st.markdown("---")
 
 
