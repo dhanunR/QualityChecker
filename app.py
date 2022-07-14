@@ -46,8 +46,8 @@ st.markdown("---")
 # information about the Datatype
 if st.button('Datatypes: ',key=0):
     dit = read_data.info()
-    dit = dit.to_text(index=False).encode('utf-8')
-    st.write(dit)
+    # dit = dit.to_text(index=False).encode('utf-8')
+    st.write(pd.text(dit))
 st.markdown("---")
 
 
