@@ -2,6 +2,7 @@ import os
 import re
 from select import select
 import streamlit as st
+from streamlit_ace import st_ace
 import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
@@ -47,8 +48,10 @@ st.markdown("---")
 if st.button('Datatypes: ',key=0):
     dit = read_data.info()
     # dit = dit.to_text(index=False).encode('utf-8')
-    st.dataframe(dit)
+    dit = dit.to_text(index=False).encode('utf-8')
+    st.download_button(label="Download data as CSV",data= dit,file_name='datainfo.csv',mime='text')
 st.markdown("---")
+
 
 
 # More Exploration
