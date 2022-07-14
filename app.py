@@ -148,7 +148,7 @@ st.markdown("Change the Datatype of a Column")
 with st.form(key="my_form3"):
     selectedcolumn = st.selectbox('Select the Column',options=read_data.columns)
     datatypes = read_data.dtypes[selectedcolumn]
-    st.text_area('The selected Column datatype is:',datatypes)
+    st.write('The selected Column datatype is:',datatypes)
     option = st.selectbox('Select the new Datatype:',('int64','float64','bool','object'))
     st.write('You seleccted:', option)
     submit_button = st.form_submit_button(label="Submit") 
