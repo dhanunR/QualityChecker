@@ -77,9 +77,9 @@ if st.button(label='Checking for Missing Values',key=2):
     st.text("beyond which we should consider dropping the variable.")
     st.text("However, this depends from case to case")
 if st.button(label='Click to Remove Null Values',key=3):
-        null = read_data.dropna
+        nullvalues = read_data.dropna
         # Download option
-        null = null.to_csv(index=False).encode('utf-8')
+        null = nullvalues.to_csv(index=False).encode('utf-8')
         st.download_button(label="Download data as CSV",data= null,file_name='NullValuesRemoved.csv',mime='text/csv')
 if st.button(label='Click to Remove Null Values From Specific Column',key=4):
         column = read_data.columns
