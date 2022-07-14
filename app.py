@@ -89,8 +89,8 @@ if st.button(label='Click to Remove Null Values From Specific Column',key=4):
         option = st.selectbox("Select the Column",column)
         submit_button = st.form_submit_button(label="Submit")
         snv=read_data.dropna(axis=0, subset=[option])
- snvr=snv.to_csv(index=False).encode('utf-8')
- st.download_button(label="Download data as CSV",data=snvr,file_name='SNullValuesRemoved.csv',mime='text/csv')
+snvr=snv.to_csv(index=False).encode('utf-8')
+st.download_button(label="Download data as CSV",data=snvr,file_name='SNullValuesRemoved.csv',mime='text/csv')
 st.markdown("---")
     
 # Check for duplication
