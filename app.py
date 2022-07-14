@@ -85,14 +85,14 @@ if st.button(label='Click to Remove Null Values',key=3):
         
 #Remove Null Values From Specific Column  
 st.markdown('Click to Remove Null Values From Specific Column')
-    with st.form(key="my_form3"):
-        column = read_data.columns
-        option = st.selectbox("Select the Column",column)
-        submit_button = st.form_submit_button(label="Submit")
-        snv=read_data.dropna(axis=0, subset=[option])
-    snvr=snv.to_csv(index=False).encode('utf-8')
-    st.download_button(label="Download data as CSV",data=snvr,file_name='SNullValuesRemoved.csv',mime='text/csv')
-    st.markdown("---")
+with st.form(key="my_form3"):
+    column = read_data.columns
+    option = st.selectbox("Select the Column",column)
+    submit_button = st.form_submit_button(label="Submit")
+    snv=read_data.dropna(axis=0, subset=[option])
+snvr=snv.to_csv(index=False).encode('utf-8')
+st.download_button(label="Download data as CSV",data=snvr,file_name='SNullValuesRemoved.csv',mime='text/csv')
+st.markdown("---")
     
 # Check for duplication
 if st.button('Checking for Duplication Rate',key=5): 
