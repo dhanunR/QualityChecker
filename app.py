@@ -78,7 +78,6 @@ if st.button(label='Checking for Missing Values',key=2):
     st.text("However, this depends from case to case")
 if st.button(label='Click to Remove Null Values',key=3):
         null = read_data.dropna
-        # Download option
         null_values = null.to_csv(index=False).encode('utf-8')
         st.download_button(label="Download data as CSV",data= null,file_name='NullValuesRemoved.csv',mime='text/csv')
         
