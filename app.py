@@ -35,7 +35,7 @@ except:
     st.stop()
 
 # Dataset Shape
-st.write("##Rows and Columns size : ")
+st.write("Rows and Columns size : ")
 st.write(read_data.shape)
 
 # Dataset Summary
@@ -46,7 +46,7 @@ st.markdown("---")
 # information about the Datatype
 if st.button('Datatypes: ',key=0):
     dit = read_data.info()
-    st.table(dit)
+    st.write(dit)
 st.markdown("---")
 
 
@@ -148,7 +148,6 @@ st.markdown("Change the Datatype of a Column")
 with st.form(key="my_form3"):
     selectedcolumn = st.selectbox('Select the Column',options=read_data.columns)
     datatypes = read_data.dtypes[selectedcolumn]
-    st.write('The selected Column datatype is:',datatypes)
     option = st.selectbox('Select the new Datatype:',('int64','float64','bool','object'))
     st.write('You seleccted:', option)
     submit_button = st.form_submit_button(label="Submit") 
