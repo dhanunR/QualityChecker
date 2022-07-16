@@ -1,4 +1,5 @@
 import os
+import io
 import re
 import sys
 from select import select
@@ -45,10 +46,15 @@ st.write(read_data.describe())
 st.markdown("---")
 
 # information about the Datatype
-#if st.button('Datatypes: ',key=0):
- #   dit = read_data.info()
-  #  sys.stdout = dit
-  #  st.write(sys.stdout)
+if st.button('Datatypes:',key=0):
+    buffer = io.StringIO()
+    read_data.info(buf=buffer)
+    s = buffer.getvalue()
+    with open("dataset_info.txt", "w", encoding="utf-8")as f:
+       f.write(s)
+       st.download_button(label="Download",data= s,file_name='Datasetinfo.txt',mime='text')
+    #st.write(s)
+
 #st.markdown("---")
 
 
@@ -76,10 +82,12 @@ if st.button(label='Checking for Missing Values',key=2):
     st.text("Ideally 20-30 perecent is the maximum missing values allowed,")
     st.text("beyond which we should consider dropping the variable.")
     st.text("However, this depends from case to case")
+
 if st.button(label='Click to Remove Null Values',key=3):
-        null = read_data.dropna
-        datanull = null.to_csv(index=False).encode('utf-8')
-        st.download_button(label="Download data as CSV",data= datanull,file_name='NullValuesRemoved.csv',mime='text/csv')
+    data_csv = read_data
+    data_csv1 = data_csv.dropna
+    data_csv.to_csv(index=False).encode('utf-8')
+    st.download_button(label="Download data as CSV",data= data_csv,file_name='NullValuesRemoved.csv',mime='text/csv')
         
 #Remove Null Values From Specific Column  
 st.markdown('Click to Remove Null Values From Specific Column')
@@ -87,9 +95,10 @@ with st.form(key="my_form0"):
     column = read_data.columns
     option = st.selectbox("Select the Column",column)
     submit_button = st.form_submit_button(label="Submit")
-    snv=read_data.dropna(axis=0, subset=[option])
-snvr=snv.to_csv(index=False).encode('utf-8')
-st.download_button(label="Download data as CSV",data=snvr,file_name='SNullValuesRemoved.csv',mime='text/csv')
+    read_data=read_data.dropna(axis=0, subset=[option])
+    new_data = read_data.to_csv(index=False).encode('utf-8')
+new_data = new_data
+st.download_button(label="Download data as CSV",data=new_data,file_name='SNullValuesRemoved.csv',mime='text/csv')
 st.markdown("---")
     
 # Check for duplication
@@ -105,10 +114,8 @@ if st.button('Checking for Duplication Rate',key=5):
 if st.button('Click to Remove Duplicate Values',key=6):
    dum = read_data[read_data.duplicated()]
    st.write("\n\nDuplicate Rows : \n",dum)
-   df = read_data.drop_duplicates(keep='first')
-   # Download option
-   df =df.to_csv(index=False).encode('utf-8')
-   st.download_button(label="Download data as CSV",data=df,file_name='DuplicateRemoved.csv',mime='text/csv')
+   read_data = read_data.drop_duplicates(keep='first')
+st.download_button(label="Download data as CSV",data=read_data.to_csv(index=False).encode('utf-8'),file_name='DuplicateRemoved.csv',mime='text/csv')
 st.markdown("---")
 #Check for completeness ratio
 if st.button("Check for Completeness Ratio",key=7):
@@ -133,6 +140,21 @@ renamed =read_data.to_csv(index=False).encode('utf-8')
 st.download_button(label="Download data as CSV",data=renamed,file_name='Renamed.csv',mime='text/csv')
 st.markdown("---")
 
+#Changing the datatype of a column
+st.markdown("Change the Datatype of a Column")
+with st.form(key="my_form3"):
+    selectedcolumn = st.selectbox('Select the Column',options=read_data.columns)
+    datatypes = read_data.dtypes[selectedcolumn]
+    option = st.selectbox('Select the new Datatype:',('int64','float64','bool','object'))
+    st.write('You seleccted:', option)
+    submit_button = st.form_submit_button(label="Submit") 
+    read_data[selectedcolumn] = read_data[selectedcolumn].astype(option)
+
+# download option
+dt = read_data.to_csv(index=False).encode('utf-8')
+st.download_button(label="Download data as CSV",data=dt,file_name='Columndatatypechanged.csv',mime='text/csv')
+st.markdown("---")
+
 
 # Replace numerical value with string
 st.markdown("Replace numerical value with string")
@@ -149,20 +171,6 @@ replacevalue =read_data.to_csv(index=False).encode('utf-8')
 st.download_button(label="Download data as CSV",data=replacevalue,file_name='ValueReplaced.csv',mime='text/csv')
 st.markdown("---")
 
-#Changing the datatype of a column
-st.markdown("Change the Datatype of a Column")
-with st.form(key="my_form3"):
-    selectedcolumn = st.selectbox('Select the Column',options=read_data.columns)
-    datatypes = read_data.dtypes[selectedcolumn]
-    option = st.selectbox('Select the new Datatype:',('int64','float64','bool','object'))
-    st.write('You seleccted:', option)
-    submit_button = st.form_submit_button(label="Submit") 
-    read_data[selectedcolumn] = read_data[selectedcolumn].astype(option)
-
-# download option
-dt = read_data.to_csv(index=False).encode('utf-8')
-st.download_button(label="Download data as CSV",data=dt,file_name='Columndatatypechanged.csv',mime='text/csv')
-st.markdown("---")
 
 
 
