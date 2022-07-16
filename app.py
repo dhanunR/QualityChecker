@@ -84,10 +84,8 @@ if st.button(label='Checking for Missing Values',key=2):
     st.text("However, this depends from case to case")
 
 if st.button(label='Click to Remove Null Values',key=3):
-    data_csv = read_data
-    data_csv1 = data_csv.dropna
-    data_csv.to_csv(index=False).encode('utf-8')
-    st.download_button(label="Download data as CSV",data= data_csv,file_name='NullValuesRemoved.csv',mime='text/csv')
+    new_data = read_data.dropna(axis=0)
+    st.download_button(label="Download data as CSV",data = new_data.to_csv(index=False).encode('utf-8'),file_name='NullValuesRemoved.csv',mime='text/csv')
         
 #Remove Null Values From Specific Column  
 st.markdown('Click to Remove Null Values From Specific Column')
