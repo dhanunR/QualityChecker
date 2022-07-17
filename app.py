@@ -33,7 +33,7 @@ try:
     else:
         st.dataframe(read_data.tail(number_of_rows))
 except:
-    st.error("KINDLY UPLOAD YOUR CSV FILE !!!")
+    st.info("KINDLY UPLOAD YOUR CSV FILE !!!")
     st.stop()
 
 # Dataset Shape
@@ -55,7 +55,7 @@ if st.button('Datatypes:',key=0):
        st.download_button(label="Download",data= s,file_name='Datasetinfo.txt',mime='text')
     #st.write(s)
 
-#st.markdown("---")
+st.markdown("---")
 
 
 
@@ -84,8 +84,8 @@ if st.button(label='Checking for Missing Values',key=2):
     st.text("However, this depends from case to case")
 
 if st.button(label='Click to Remove Null Values',key=3):
-    new_data = read_data.dropna(axis=0)
-    st.download_button(label="Download data as CSV",data = new_data.to_csv(index=False).encode('utf-8'),file_name='NullValuesRemoved.csv',mime='text/csv')
+    new_datanullvalue = read_data.dropna(axis=0)
+    st.download_button(label="Download data as CSV",data = new_datanullvalue.to_csv(index=False).encode('utf-8'),file_name='NullValuesRemoved.csv',mime='text/csv')
         
 #Remove Null Values From Specific Column  
 st.markdown('Click to Remove Null Values From Specific Column')
@@ -93,8 +93,9 @@ with st.form(key="my_form0"):
     column = read_data.columns
     option = st.selectbox("Select the Column",column)
     submit_button = st.form_submit_button(label="Submit")
-    read_data=read_data.dropna(axis=0, subset=[option])
-    new_data = read_data.to_csv(index=False).encode('utf-8')
+    new_datasnv = read_data
+    new_datasnv=new_datasnv.dropna(axis=0, subset=[option])
+    new_data = new_datasnv.to_csv(index=False).encode('utf-8')
 new_data = new_data
 st.download_button(label="Download data as CSV",data=new_data,file_name='SNullValuesRemoved.csv',mime='text/csv')
 st.markdown("---")
@@ -110,10 +111,12 @@ if st.button('Checking for Duplication Rate',key=5):
 
 # Removing Duplicate Values
 if st.button('Click to Remove Duplicate Values',key=6):
-   dum = read_data[read_data.duplicated()]
-   st.write("\n\nDuplicate Rows : \n",dum)
-   read_data = read_data.drop_duplicates(keep='first')
-st.download_button(label="Download data as CSV",data=read_data.to_csv(index=False).encode('utf-8'),file_name='DuplicateRemoved.csv',mime='text/csv')
+    new_dataduplicate = read_data
+    dum = new_dataduplicate[new_dataduplicate.duplicated()]
+    st.write("\n\nDuplicate Rows : \n",dum)
+    new_dataduplicate = new_dataduplicate.drop_duplicates(keep='first')
+    new_dataduplicate = new_dataduplicate.to_csv(index=False).encode('utf-8')
+    st.download_button(label="Download data as CSV",data=new_dataduplicate,file_name='DuplicateRemoved.csv',mime='text/csv')
 st.markdown("---")
 #Check for completeness ratio
 if st.button("Check for Completeness Ratio",key=7):
@@ -133,8 +136,9 @@ with st.form(key="my_form1"):
     selectedcolumn = st.selectbox('Select the Column',options=read_data.columns)
     newname = st.text_input("Enter the new Name: ")
     submit_button = st.form_submit_button(label="Submit")
-    read_data = read_data.rename(columns={selectedcolumn:newname})
-renamed =read_data.to_csv(index=False).encode('utf-8')
+    new_datarename = read_data
+    new_datarename = new_datarename.rename(columns={selectedcolumn:newname})
+renamed =new_datarename.to_csv(index=False).encode('utf-8')
 st.download_button(label="Download data as CSV",data=renamed,file_name='Renamed.csv',mime='text/csv')
 st.markdown("---")
 
@@ -145,11 +149,12 @@ with st.form(key="my_form3"):
     datatypes = read_data.dtypes[selectedcolumn]
     option = st.selectbox('Select the new Datatype:',('int64','float64','bool','object'))
     st.write('You seleccted:', option)
-    submit_button = st.form_submit_button(label="Submit") 
-    read_data[selectedcolumn] = read_data[selectedcolumn].astype(option)
+    submit_button = st.form_submit_button(label="Submit")
+    newdata_datatype =  read_data
+    newdata_datatype[selectedcolumn] = newdata_datatype[selectedcolumn].astype(option)
 
 # download option
-dt = read_data.to_csv(index=False).encode('utf-8')
+dt = newdata_datatype.to_csv(index=False).encode('utf-8')
 st.download_button(label="Download data as CSV",data=dt,file_name='Columndatatypechanged.csv',mime='text/csv')
 st.markdown("---")
 
@@ -160,12 +165,13 @@ with st.form(key="my_form2"):
     selectedcolumn = st.selectbox('Select the Column',options=read_data.columns)
     firstvalue = st.text_input(" Enter the string for 0: ")
     secondvalue = st.text_input(" Enter the string for 1: ")
-    submit_button = st.form_submit_button(label="Submit")    
-    read_data[selectedcolumn].replace(0,firstvalue,inplace=True)
-    read_data[selectedcolumn].replace(1,secondvalue,inplace=True)
+    submit_button = st.form_submit_button(label="Submit") 
+    newdata_value = read_data   
+    newdata_value[selectedcolumn].replace(0,firstvalue,inplace=True)
+    newdata_value[selectedcolumn].replace(1,secondvalue,inplace=True)
 
     # download option
-replacevalue =read_data.to_csv(index=False).encode('utf-8')
+replacevalue =newdata_value.to_csv(index=False).encode('utf-8')
 st.download_button(label="Download data as CSV",data=replacevalue,file_name='ValueReplaced.csv',mime='text/csv')
 st.markdown("---")
 
