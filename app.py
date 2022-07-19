@@ -184,8 +184,8 @@ with st.form(key="new_form"):
     Newcolumn = st.text_input("Enter the New Column Name:")
     submit_button = st.form_submit_button(label="submit")
     location = st.text_input("Enter the Location")
-    read_data = read_data.insert(loc=location, column=Newcolumn)
-    read_data[Newcolumn] = read_column[[selectedcolumn, selectedcolumn2]].apply("-".join, axis=1)
+    new = read_column[[selectedcolumn, selectedcolumn2]].apply("-".join, axis=1)
+    read_data = read_data.insert(loc=location, column=Newcolumn, value = new)
     #download option
 read_data = read_data.to_csv(index=False).encode('utf-8')
 st.download_button(label="Download data as CSV",data=read_data,file_name='Concatenate.csv',mime='text/csv')
