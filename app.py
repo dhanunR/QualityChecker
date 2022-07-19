@@ -176,7 +176,20 @@ st.download_button(label="Download data as CSV",data=replacevalue,file_name='Val
 st.markdown("---")
 
 
+# concatenate Two Columns
+st.markdown("Concatenate TWO columns")
+with st.form(Key="my_form3"):
+    selectedcolumn = st.selectbox('Select the First Column',options=read_data.columns)
+    selectedcolumn2 = st.selectbox('Select the Second Column',options=read_data.columns)
+    Newcolumn = st.text_input("Enter the New Column Name:")
+    submit_button = st.form_submit_button(label="submit")
+    read_data[Newcolumn] = read_column[[selectedcolumn, selectedcolumn2]].apply("-".join, axis=1)
+    #download option
+read_data = read_data.to_csv(index=False).encode('utf-8')
+st.download_button(label="Download data as CSV",data=read_data,file_name='Concatenate.csv',mime='text/csv')
+st.markdown("---")
 
+    
 
 #Data Cleaning
 if st.button("Clean the Data",key=8):
