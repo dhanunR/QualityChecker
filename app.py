@@ -180,11 +180,11 @@ st.markdown("---")
 st.markdown("Concatenate TWO columns")
 with st.form(key="new_form"):
     #read_data1 = read_data.select_dtypes(include=['object'])
-    selectedcolumn = st.selectbox('Select the First Column',options=read_data.select_dtypes(include=['object']))
-    selectedcolumn2 = st.selectbox('Select the Second Column',options=read_data.select_dtypes(include=['object']))
+    selectedcolumn3 = st.selectbox('Select the First Column',options=read_data.select_dtypes(include=['object']))
+    selectedcolumn4 = st.selectbox('Select the Second Column',options=read_data.select_dtypes(include=['object']))
     #newcolumn = st.text_input("Enter the New Column Name:")
     submit_button = st.form_submit_button(label="submit")
-    read_data = read_data[selectedcolumn].astype(str) + read_data[selectedcolumn2]
+    read_data = read_data[selectedcolumn3].astype(str) + read_data[selectedcolumn4]
     #download option
 read_data = read_data.to_csv(index=False).encode('utf-8')
 st.download_button(label="Download data as CSV",data=read_data,file_name='Concatenate.csv',mime='text/csv')
