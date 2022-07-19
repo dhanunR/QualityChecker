@@ -147,11 +147,14 @@ st.markdown("Change the Datatype of a Column")
 with st.form(key="my_form3"):
     selectedcolumn = st.selectbox('Select the Column',options=read_data.columns)
     datatypes = read_data.dtypes[selectedcolumn]
-    option = st.selectbox('Select the new Datatype:',('int64','float64','bool','object'))
-    st.write('You seleccted:', option)
-    submit_button = st.form_submit_button(label="Submit")
-    newdata_datatype =  read_data
-    newdata_datatype[selectedcolumn] = newdata_datatype[selectedcolumn].astype(option)
+    if (datatypes == object):
+        st.error("Object Datatype cannot be changed")
+    if (datatypes == int,float,bool):
+        option = st.selectbox('Select the new Datatype:',('int64','float64','bool','object'))
+        st.write('You seleccted:', option)
+        submit_button = st.form_submit_button(label="Submit")
+        newdata_datatype =  read_data
+        newdata_datatype[selectedcolumn] = newdata_datatype[selectedcolumn].astype(option)
 
 # download option
 dt = newdata_datatype.to_csv(index=False).encode('utf-8')
