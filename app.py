@@ -186,9 +186,8 @@ with st.form(key="new_form"):
     selectedcolumn4 = st.selectbox('Select the Second Column',options=newread_data1.columns)
     newcolumn = st.text_input("Enter the New Column Name:")
     submit_button = st.form_submit_button(label="submit")
-    newread_data1[newcolumn] = newread_data1[[selectedcolumn3, selectedcolumn4]].apply(" ".join, axis=1)
+    read_data[newcolumn] = read_data[[selectedcolumn3, selectedcolumn4]].apply(" ".join, axis=1)
     #read_data = newread_data1[selectedcolumn3].astype(str) + newread_data1[selectedcolumn4]
-    read_data = newread_data1 
     #download option
 read_data = read_data.to_csv(index=False).encode('utf-8')
 st.download_button(label="Download data as CSV",data=read_data,file_name='Concatenate.csv',mime='text/csv')
