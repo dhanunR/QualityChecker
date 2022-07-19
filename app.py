@@ -145,8 +145,9 @@ st.markdown("---")
 #Changing the datatype of a column
 st.markdown("Change the Datatype of a Column")
 with st.form(key="my_form3"):
-    selectedcolumn = st.selectbox('Select the Column',options=read_data.columns.select_dtypes(include=['int64','float64','bool']))
-    datatypes = read_data.dtypes[selectedcolumn]
+    newread_data = read_data.select_dtypes(include=['int64','float64','bool'])
+    selectedcolumn = st.selectbox('Select the Column',options=newread_data.columns)
+    datatypes = newread_data.dtypes[selectedcolumn]
     st.error("Object Datatype cannot be changed")
     option = st.selectbox('Select the new Datatype:',('int64','float64','bool','object'))
     st.write('You seleccted:', option)
