@@ -148,7 +148,6 @@ with st.form(key="my_form3"):
     newread_data = read_data.select_dtypes(include=['int64','float64','bool'])
     selectedcolumn = st.selectbox('Select the Column',options=newread_data.columns)
     datatypes = newread_data.dtypes[selectedcolumn]
-    st.error("Object Datatype cannot be changed")
     option = st.selectbox('Select the new Datatype:',('int64','float64','bool','object'))
     st.write('You seleccted:', option)
     submit_button = st.form_submit_button(label="Submit")
