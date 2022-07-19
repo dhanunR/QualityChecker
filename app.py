@@ -76,7 +76,7 @@ if st.button(label='Remove special character',key=10):
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–"]
     #read_data = read_data.str.replace(spec_chars,"")
-    read_data = read_data.replace(spec_chars,"",regex=True)
+    read_data = read_data.replace(spec_chars,"")
     read_data = read_data.to_csv(index=False).encode('utf-8')
     st.download_button(label="Download data as CSV",data=read_data,file_name='DuplicateRemoved.csv',mime='text/csv')
 st.markdown("---")
