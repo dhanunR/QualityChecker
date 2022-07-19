@@ -69,6 +69,18 @@ if st.button('Total Number of Unique Values:',key=1):
     st.write(read_data.nunique())
 st.markdown("---")
 
+#Removing Special Char 
+if st.button(label='Remove special character',key=10):
+    spec_chars = ["!",'"',"#","%","&","'","(",")",
+              "*","+",",","-",".","/",":",";","<",
+              "=",">","?","@","[","\\","]","^","_",
+              "`","{","|","}","~","–"]
+    read_data = read_data.replace(to_replace =[spec_chars],value = "")
+    read_data = read_data.to_csv(index=False).encode('utf-8')
+    st.download_button(label="Download data as CSV",data=read_data,file_name='DuplicateRemoved.csv',mime='text/csv')
+st.markdown("---")
+    
+
 #Checking for Null Values : 
 if st.button(label='Checking for Missing Values',key=2): 
     null_values = read_data.isnull().sum()/len(read_data)*100
