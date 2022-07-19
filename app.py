@@ -184,7 +184,7 @@ with st.form(key="new_form"):
     Newcolumn = st.text_input("Enter the New Column Name:")
     submit_button = st.form_submit_button(label="submit")
     location = st.text_input("Enter the Location")
-    new = read_column[[selectedcolumn, selectedcolumn2]].apply("-".join, axis=1)
+    new = read_data[[selectedcolumn, selectedcolumn2]].apply("-".join, axis=1)
     read_data = read_data.insert(loc=location, column=Newcolumn, value = new)
     #download option
 read_data = read_data.to_csv(index=False).encode('utf-8')
