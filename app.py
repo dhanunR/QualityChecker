@@ -178,7 +178,7 @@ st.markdown("---")
 
 # concatenate Two Columns
 st.markdown("Concatenate TWO columns")
-with st.form(Key="my_form3"):
+with st.form(Key="my_form4"):
     selectedcolumn = st.selectbox('Select the First Column',options=read_data.columns)
     selectedcolumn2 = st.selectbox('Select the Second Column',options=read_data.columns)
     Newcolumn = st.text_input("Enter the New Column Name:")
