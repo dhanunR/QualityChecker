@@ -213,15 +213,16 @@ st.markdown("---")
 #Data Cleaning
 if st.button("Clean the Data",key=8):
     st.write("Checking for Special Characters:")
+    dfr = read_data
     spec_chars = ["!",'"',"#","%","&","'","(",")",
               "*","+",",","-",".","/",":",";","<",
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–","$"]
-    dfr = read_data.replace(spec_chars,"")
+    dfr0 = dfr.replace(spec_chars,"")
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
     st.write("Removing Null Values...")
-    dfr1 = dfr.dropna()
+    dfr1 = dfr0.dropna()
     st.write("Null Values Removed")
     st.write("Checking for Duplicate Values: ")
     st.write("Removing Duplicate Values... ")
