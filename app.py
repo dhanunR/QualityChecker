@@ -201,8 +201,10 @@ if st.button("Clean the Data",key=8):
               "`","{","|","}","~","–","$",""]
     dfr = read_data.replace(spec_chars,"")
     cleaneddata = dfr.to_csv(index=False).encode('utf-8')
+    
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
+    cleaneddata = pd.read_csv(cleaneddata)
     dfr1 = cleaneddata.dropna(axis=0)
     st.write("Removing Null Values...")
     st.write("Null Values Removed")
