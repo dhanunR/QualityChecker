@@ -188,8 +188,7 @@ if st.button(label='Remove special character',key=10):
               "`","{","|","}","~","–","$"]
     newdata = read_data
     #read_data = read_data.str.replace(spec_chars,"")
-    #newdata = newdata.replace(spec_chars,"")
-    newdata = newdata.drop(newdata[(newdata[newdata.column] == spec_chars)].index, inplace=True)
+    newdata = newdata.replace(spec_chars,"")
     newdata = newdata.to_csv(index=False).encode('utf-8')
     st.download_button(label="Download data as CSV",data=newdata,file_name='Specialchar.csv',mime='text/csv')
 st.markdown("---")
