@@ -218,11 +218,11 @@ if st.button("Clean the Data",key=8):
               "*","+",",","-",".","/",":",";","<",
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–","$"]
-    dfr0 = dfr.replace(spec_chars,"")
+    dfread = dfr.replace(spec_chars,"")
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
     st.write("Removing Null Values...")
-    dfr1 = dfr0.dropna()
+    dfr1 = dfread.dropna()
     st.write("Null Values Removed")
     st.write("Checking for Duplicate Values: ")
     st.write("Removing Duplicate Values... ")
