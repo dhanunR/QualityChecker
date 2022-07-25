@@ -195,24 +195,24 @@ st.markdown("---")
 if st.button("Clean the Data",key=8):
     st.write("Checking for Special Characters:")
     dfr = read_data
+    st.write("Checking for Duplicate Values: ")
+    st.write("Removing Duplicate Values... ")
+    dfr = dfr.drop_duplicates(keep='first')
     spec_chars = ["!",'"',"#","%","&","'","(",")",
               "*","+",",","-",".","/",":",";","<",
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–","$",""]
-    dfread = dfr.replace(spec_chars,"")
-    dfread = dfread.dropna(axis=0)
+    dfr = dfr.replace(spec_chars,"")
+    dfr = dfr.dropna(axis=0)
     #dfread = dfr.drop(spec_chars,axis=0)
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
     st.write("Removing Null Values...")
-    dfr1 = dfread.drop_duplicates(keep='first')
-    dfr2 = dfr1.dropna(axis=0)
     st.write("Null Values Removed")
-    st.write("Checking for Duplicate Values: ")
-    st.write("Removing Duplicate Values... ")
+   
     #dfr2 = dfr1.drop_duplicates(keep='first')
     st.write("Duplicate Values Removed ")
-    cleaneddata = dfr2.to_csv(index=False).encode('utf-8')
+    cleaneddata = dfr.to_csv(index=False).encode('utf-8')
     st.download_button(label="Download Cleaned Data",data=cleaneddata,file_name='CleanedData.csv',mime='text/csv')
 st.markdown("---")
     
