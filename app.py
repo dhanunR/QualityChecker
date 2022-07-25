@@ -192,6 +192,7 @@ if st.button(label='Remove special character',key=10):
     newdata = newdata.to_csv(index=False).encode('utf-8')
     st.download_button(label="Download data as CSV",data=newdata,file_name='Specialchar.csv',mime='text/csv')
 st.markdown("---")
+newdata1 = newdata
 
 #Data Cleaning
 if st.button("Clean the Data",key=8):
@@ -201,11 +202,9 @@ if st.button("Clean the Data",key=8):
               #"=",">","?","@","[","\\","]","^","_",
               #"`","{","|","}","~","–","$",""]
     #dfr = read_data.replace(spec_chars,"")
-    #cleaneddata = dfr.to_csv(index=False).encode('utf-8')
-    #cleaneddata.to_csv('specialchar.csv')
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
-    dfr1 = newdata.dropna(axis=0)
+    dfr1 = newdata1.dropna(axis=0)
     st.write("Removing Null Values...")
     st.write("Null Values Removed")
     st.write("Checking for Duplicate Values: ")
