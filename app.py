@@ -199,7 +199,7 @@ if st.button("Clean the Data",key=8):
               "*","+",",","-",".","/",":",";","<",
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–","$",""]
-    dfr = read_data.replace(spec_chars,"").astype(float)
+    dfr = read_data.replace(spec_chars,"").astype(object)
     #cleaneddata = dfr.to_csv(index=False).encode('utf-8')
     
     st.write("Removed Special Characters:")
