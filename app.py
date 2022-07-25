@@ -214,9 +214,9 @@ st.markdown("---")
 if st.button("Clean the Data",key=8):
     st.write("Checking for Special Characters:")
     spec_chars = ["!",'"',"#","%","&","'","(",")",
-             # "*","+",",","-",".","/",":",";","<",
-              #"=",">","?","@","[","\\","]","^","_",
-              #"`","{","|","}","~","–","$"]
+              "*","+",",","-",".","/",":",";","<",
+              "=",">","?","@","[","\\","]","^","_",
+              "`","{","|","}","~","–","$"]
     dfr = read_data.replace(spec_chars,"")
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
