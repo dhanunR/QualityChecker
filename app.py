@@ -202,8 +202,10 @@ if st.button("Clean the Data",key=8):
               "*","+",",","-",".","/",":",";","<",
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–","$",""]
-    dfr = dfr.replace(spec_chars,"")
-    dfr = dfr.dropna(axis=0)
+    newdataframe = dfr.replace(spec_chars,"")
+    print(newdataframe)
+    newdataframe = newdataframe.dropna(axis=0)
+    print(newdataframe)
     #dfread = dfr.drop(spec_chars,axis=0)
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
@@ -212,7 +214,7 @@ if st.button("Clean the Data",key=8):
    
     #dfr2 = dfr1.drop_duplicates(keep='first')
     st.write("Duplicate Values Removed ")
-    cleaneddata = dfr.to_csv(index=False).encode('utf-8')
+    cleaneddata = newdataframe.to_csv(index=False).encode('utf-8')
     st.download_button(label="Download Cleaned Data",data=cleaneddata,file_name='CleanedData.csv',mime='text/csv')
 st.markdown("---")
     
