@@ -186,13 +186,13 @@ if st.button(label='Remove special character',key=10):
               "*","+",",","-",".","/",":",";","<",
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–","$"]
-    newdata = read_data
+    #newdata = read_data
     #read_data = read_data.str.replace(spec_chars,"")
-    newdata = newdata.replace(spec_chars,"")
-    newdata = newdata.to_csv(index=False).encode('utf-8')
-    st.download_button(label="Download data as CSV",data=newdata,file_name='Specialchar.csv',mime='text/csv')
+    read_data = read_data.replace(spec_chars,"")
+    read_data = read_data.to_csv(index=False).encode('utf-8')
+    st.download_button(label="Download data as CSV",data=read_data,file_name='Specialchar.csv',mime='text/csv')
 #st.markdown("---")
-newdata1 = newdata
+read_data = read_data
 
 #Data Cleaning
 if st.button("Clean the Data",key=8):
@@ -204,12 +204,12 @@ if st.button("Clean the Data",key=8):
     #dfr = read_data.replace(spec_chars,"")
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
-    dfr1 = newdata1.dropna(axis=0)
+    read_data = read_data.dropna(axis=0)
     st.write("Removing Null Values...")
     st.write("Null Values Removed")
     st.write("Checking for Duplicate Values: ")
     st.write("Removing Duplicate Values... ")
-    dfr2 = dfr1.drop_duplicates(keep='first')
+    dfr2 = read_data.drop_duplicates(keep='first')
     
    
     #dfread = dfr.drop(spec_chars,axis=0)
