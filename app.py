@@ -223,7 +223,9 @@ if st.button("Clean the Data",key=8):
     #dfr2 = dfr1.drop_duplicates(keep='first')
     st.write("Duplicate Values Removed ")
     dfr3 = dfr2.to_csv(index=False).encode('utf-8')
-    st.download_button(label="Download Cleaned Data",data=dfr3,file_name='CleanedData.csv',mime='text/csv')
+    dfr4 = dfr3.dropna(axis=0)
+    dfr4 = dfr4.to_csv(index=False).encode('utf-8')
+    st.download_button(label="Download Cleaned Data",data=dfr4,file_name='CleanedData.csv',mime='text/csv')
 st.markdown("---")
     
     
