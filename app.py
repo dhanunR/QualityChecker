@@ -199,7 +199,7 @@ if st.button("Clean the Data",key=8):
               "*","+",",","-",".","/",":",";","<",
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–","$",""]
-    dfread = dfr.replace(spec_chars,"")
+    dfread = dfr.replace(spec_chars,"",regex=True).astype(float)
     dfread = dfread
     dfread = dfread.dropna()
     #dfread = dfr.drop(spec_chars,axis=0)
