@@ -200,11 +200,12 @@ with st.form(key="new_form"):
     selectedcolumn4 = st.selectbox('Select the Second Column',options=newread_data1.columns)
     newcolumn = st.text_input("Enter the New Column Name:")
     submit_button = st.form_submit_button(label="submit")
-    read_data[newcolumn] = read_data[[selectedcolumn3, selectedcolumn4]].apply(" ".join, axis=1)
+    df_read_data = read_data
+    df_read_data[newcolumn] = df_read_data[[selectedcolumn3, selectedcolumn4]].apply(" ".join, axis=1)
     #read_data = newread_data1[selectedcolumn3].astype(str) + newread_data1[selectedcolumn4]
     #download option
-read_data = read_data.to_csv(index=False).encode('utf-8')
-st.download_button(label="Download data as CSV",data=read_data,file_name='Concatenate.csv',mime='text/csv')
+df1_read_data = df_read_data.to_csv(index=False).encode('utf-8')
+st.download_button(label="Download data as CSV",data=df1_read_data,file_name='Concatenate.csv',mime='text/csv')
 st.markdown("---")
 
     
@@ -212,22 +213,21 @@ st.markdown("---")
 #Data Cleaning
 if st.button("Clean the Data",key=8):
     st.write("Checking for Special Characters:")
-    df = read_data
-    #spec_chars = ["!",'"',"#","%","&","'","(",")",
+    spec_chars = ["!",'"',"#","%","&","'","(",")",
              # "*","+",",","-",".","/",":",";","<",
               #"=",">","?","@","[","\\","]","^","_",
               #"`","{","|","}","~","–","$"]
-    #read_data = read_data.replace(spec_chars,"")
+    dfr = read_data.replace(spec_chars,"")
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
     st.write("Removing Null Values...")
-    df1 = df.dropna()
+    dfr1 = dfr.dropna()
     st.write("Null Values Removed")
     st.write("Checking for Duplicate Values: ")
     st.write("Removing Duplicate Values... ")
-    df2 = df1.drop_duplicates(keep='first')
+    dfr2 = dfr1.drop_duplicates(keep='first')
     st.write("Duplicate Values Removed ")
-    cleaneddata = df2.to_csv(index=False).encode('utf-8')
+    cleaneddata = dfr2.to_csv(index=False).encode('utf-8')
     st.download_button(label="Download Cleaned Data",data=cleaneddata,file_name='CleanedData.csv',mime='text/csv')
     st.markdown("---")
     
