@@ -180,6 +180,23 @@ replacevalue =newdata_value.to_csv(index=False).encode('utf-8')
 st.download_button(label="Download data as CSV",data=replacevalue,file_name='ValueReplaced.csv',mime='text/csv')
 st.markdown("---")
 
+
+
+
+#Data Cleaning
+if st.button("Clean the Data",key=8):
+    st.write("Checking for Null Values:")
+    read_data = read_data.dropna(axis=0)
+    st.write("Removing Null Values...")
+    st.write("Null Values Removed")
+    st.write("Checking for Duplicate Values: ")
+    st.write("Removing Duplicate Values... ")
+    dfr2 = read_data.drop_duplicates(keep='first')
+    st.write("Duplicate Values Removed ")
+    dfr4 = dfr2.to_csv(index=False).encode('utf-8')
+    st.download_button(label="Download Cleaned Data",data=dfr4,file_name='CleanedData.csv',mime='text/csv')
+st.markdown("---")
+    
 #Removing Special Char 
 if st.button(label='Remove special character',key=10):
     spec_chars = ["!",'"',"#","%","&","'","(",")",
@@ -194,42 +211,8 @@ if st.button(label='Remove special character',key=10):
     
     st.download_button(label="Download data as CSV",data=read_data,file_name='Specialchar.csv',mime='text/csv')
     #read_data.to_csv(r'C:\Users\217648\Downloads\file3.csv', index=False)
-#st.markdown("---")
-#read_data = read_data
-
-#Data Cleaning
-if st.button("Clean the Data",key=8):
-    st.write("Checking for Special Characters:")
-    #spec_chars = ["!",'"',"#","%","&","'","(",")",
-             # "*","+",",","-",".","/",":",";","<",
-              #"=",">","?","@","[","\\","]","^","_",
-              #"`","{","|","}","~","–","$",""]
-    #dfr = read_data.replace(spec_chars,"")
-    st.write("Removed Special Characters:")
-    st.write("Checking for Null Values:")
-    #read_data1 = pd.read_csv (r'C:\Users\217648\Downloads\file3.csv')
-    read_data = read_data.dropna(axis=0)
-    st.write("Removing Null Values...")
-    st.write("Null Values Removed")
-    st.write("Checking for Duplicate Values: ")
-    st.write("Removing Duplicate Values... ")
-    dfr2 = read_data.drop_duplicates(keep='first')
-    
-   
-    #dfread = dfr.drop(spec_chars,axis=0)
-    
-    
-    
-   
-    #dfr2 = dfr1.drop_duplicates(keep='first')
-    st.write("Duplicate Values Removed ")
-    dfr3 = dfr2.to_csv(index=False).encode('utf-8')
-    dfr4 = dfr3.dropna(axis=0)
-    dfr4 = dfr4.to_csv(index=False).encode('utf-8')
-    st.download_button(label="Download Cleaned Data",data=dfr4,file_name='CleanedData.csv',mime='text/csv')
 st.markdown("---")
-    
-    
+
 # concatenate Two Columns
 st.markdown("Concatenate TWO columns")
 with st.form(key="new_form"):
