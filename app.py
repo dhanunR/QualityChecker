@@ -216,18 +216,18 @@ if st.button("Clean the Data",key=8):
               "*","+",",","-",".","/",":",";","<",
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–","$"]
-    fullread_data = read_data
-    fullread_data = fullread_data.replace(spec_chars,"")
+    read_data = read_data
+    read_data = read_data.replace(spec_chars,"")
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
     st.write("Removing Null Values...")
-    fullread_data = fullread_data.dropna()
+    read_data = read_data.dropna()
     st.write("Null Values Removed")
     st.write("Checking for Duplicate Values: ")
     st.write("Removing Duplicate Values... ")
-    fullread_data = fullread_data.drop_duplicates(keep='first')
+    read_data = read_data.drop_duplicates(keep='first')
     st.write("Duplicate Values Removed ")
-    cleaneddata = fullread_data.to_csv(index=False).encode('utf-8')
+    cleaneddata = read_data.to_csv(index=False).encode('utf-8')
     st.download_button(label="Download Cleaned Data",data=cleaneddata,file_name='CleanedData.csv',mime='text/csv')
     st.markdown("---")
     
