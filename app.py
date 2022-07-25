@@ -144,6 +144,25 @@ if st.button("Check for Completeness Ratio",key=7):
         st.text('Completeness is defined as the ratio of non-missing values to total records in dataset.')
 st.markdown("---")
 
+# concatenate Two Columns
+st.markdown("Concatenate TWO columns")
+with st.form(key="new_form"):
+    #read_data1 = read_data.select_dtypes(include=['object'])
+    newread_data1 = read_data.select_dtypes(include=['object'])
+    selectedcolumn3 = st.selectbox('Select the First Column',options=newread_data1.columns)
+    selectedcolumn4 = st.selectbox('Select the Second Column',options=newread_data1.columns)
+    newcolumn = st.text_input("Enter the New Column Name:")
+    submit_button = st.form_submit_button(label="submit")
+    df_read_data = read_data
+    df_read_data[newcolumn] = df_read_data[[selectedcolumn3, selectedcolumn4]].apply(" ".join, axis=1)
+    #read_data = newread_data1[selectedcolumn3].astype(str) + newread_data1[selectedcolumn4]
+    #download option
+df1_read_data = df_read_data.to_csv(index=False).encode('utf-8')
+st.download_button(label="Download data as CSV",data=df1_read_data,file_name='Concatenate.csv',mime='text/csv')
+st.markdown("---")
+
+
+
 # Renaming a Column
 st.markdown('Renaming a Column')
 with st.form(key="my_form1"):
@@ -194,18 +213,15 @@ st.markdown("---")
 #Data Cleaning
 if st.button("Clean the Data",key=8):
     st.write("Checking for Special Characters:")
-    dfr = read_data
     st.write("Checking for Duplicate Values: ")
     st.write("Removing Duplicate Values... ")
-    dfr = dfr.drop_duplicates(keep='first')
+    read_data = read_data.drop_duplicates(keep='first')
     spec_chars = ["!",'"',"#","%","&","'","(",")",
               "*","+",",","-",".","/",":",";","<",
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–","$",""]
-    newdataframe = dfr.replace(spec_chars,"")
-    print(newdataframe)
-    newdataframe = newdataframe.dropna(axis=0)
-    print(newdataframe)
+    read_data = read_data.replace(spec_chars,"")
+    read_data= read_data.dropna(axis=0)
     #dfread = dfr.drop(spec_chars,axis=0)
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
@@ -214,27 +230,12 @@ if st.button("Clean the Data",key=8):
    
     #dfr2 = dfr1.drop_duplicates(keep='first')
     st.write("Duplicate Values Removed ")
-    cleaneddata = newdataframe.to_csv(index=False).encode('utf-8')
+    cleaneddata = read_data.to_csv(index=False).encode('utf-8')
     st.download_button(label="Download Cleaned Data",data=cleaneddata,file_name='CleanedData.csv',mime='text/csv')
 st.markdown("---")
     
     
-# concatenate Two Columns
-st.markdown("Concatenate TWO columns")
-with st.form(key="new_form"):
-    #read_data1 = read_data.select_dtypes(include=['object'])
-    newread_data1 = read_data.select_dtypes(include=['object'])
-    selectedcolumn3 = st.selectbox('Select the First Column',options=newread_data1.columns)
-    selectedcolumn4 = st.selectbox('Select the Second Column',options=newread_data1.columns)
-    newcolumn = st.text_input("Enter the New Column Name:")
-    submit_button = st.form_submit_button(label="submit")
-    df_read_data = read_data
-    df_read_data[newcolumn] = df_read_data[[selectedcolumn3, selectedcolumn4]].apply(" ".join, axis=1)
-    #read_data = newread_data1[selectedcolumn3].astype(str) + newread_data1[selectedcolumn4]
-    #download option
-df1_read_data = df_read_data.to_csv(index=False).encode('utf-8')
-st.download_button(label="Download data as CSV",data=df1_read_data,file_name='Concatenate.csv',mime='text/csv')
-st.markdown("---")
+
 
     
 
