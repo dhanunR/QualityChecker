@@ -211,15 +211,23 @@ st.markdown("---")
 
 #Data Cleaning
 if st.button("Clean the Data",key=8):
+    st.write("Checking for Special Characters:")
+    spec_chars = ["!",'"',"#","%","&","'","(",")",
+              "*","+",",","-",".","/",":",";","<",
+              "=",">","?","@","[","\\","]","^","_",
+              "`","{","|","}","~","–","$"]
+    fullread_data = read_data
+    fullread_data = fullread_data.replace(spec_chars,"")
+    st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
     st.write("Removing Null Values...")
-    df = read_data.dropna()
+    fullread_data = fullread_data.dropna()
     st.write("Null Values Removed")
     st.write("Checking for Duplicate Values: ")
     st.write("Removing Duplicate Values... ")
-    df1 = df.drop_duplicates(keep='first')
+    fullread_data = fullread_data.drop_duplicates(keep='first')
     st.write("Duplicate Values Removed ")
-    cleaneddata = df1.to_csv(index=False).encode('utf-8')
+    cleaneddata = fullread_data.to_csv(index=False).encode('utf-8')
     st.download_button(label="Download Cleaned Data",data=cleaneddata,file_name='CleanedData.csv',mime='text/csv')
     st.markdown("---")
     
