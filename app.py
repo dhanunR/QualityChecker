@@ -190,6 +190,7 @@ if st.button(label='Remove special character',key=10):
     #read_data = read_data.str.replace(spec_chars,"")
     read_data = read_data.replace(spec_chars,"")
     read_data = read_data.to_csv(index=False).encode('utf-8')
+    read_data.to_csv(r'C:\Users\217648\Downloads\file3.csv', index=False)
     st.download_button(label="Download data as CSV",data=read_data,file_name='Specialchar.csv',mime='text/csv')
 #st.markdown("---")
 read_data = read_data
@@ -204,6 +205,7 @@ if st.button("Clean the Data",key=8):
     #dfr = read_data.replace(spec_chars,"")
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
+    read_data1 = pd.read_csv (r'C:\Users\217648\Downloads\file3.csv')
     read_data = read_data.dropna(axis=0)
     st.write("Removing Null Values...")
     st.write("Null Values Removed")
