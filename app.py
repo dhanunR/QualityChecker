@@ -187,14 +187,14 @@ if st.button(label='Remove special character',key=10):
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–","$"]
     #newdata = read_data
-    #read_data = read_data.str.replace(spec_chars,"")
-    read_data = read_data.replace(spec_chars,"")
+    read_data = read_data.str.replace(spec_chars,"")
+    #read_data = read_data.replace(spec_chars,"")
     read_data = read_data.to_csv(index=False).encode('utf-8')
     
     st.download_button(label="Download data as CSV",data=read_data,file_name='Specialchar.csv',mime='text/csv')
-    read_data.to_csv(r'C:\Users\217648\Downloads\file3.csv', index=False)
+    #read_data.to_csv(r'C:\Users\217648\Downloads\file3.csv', index=False)
 #st.markdown("---")
-read_data = read_data
+#read_data = read_data
 
 #Data Cleaning
 if st.button("Clean the Data",key=8):
