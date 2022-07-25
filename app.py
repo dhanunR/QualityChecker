@@ -212,11 +212,11 @@ st.markdown("---")
 #Data Cleaning
 if st.button("Clean the Data",key=8):
     st.write("Checking for Special Characters:")
+    read_data = read_data
     spec_chars = ["!",'"',"#","%","&","'","(",")",
               "*","+",",","-",".","/",":",";","<",
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–","$"]
-    read_data = read_data
     read_data = read_data.replace(spec_chars,"")
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
