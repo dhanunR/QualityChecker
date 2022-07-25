@@ -198,7 +198,7 @@ if st.button("Clean the Data",key=8):
     spec_chars = ["!",'"',"#","%","&","'","(",")",
               "*","+",",","-",".","/",":",";","<",
               "=",">","?","@","[","\\","]","^","_",
-              "`","{","|","}","~","–","$"]
+              "`","{","|","}","~","–","$",""]
     #dfread = dfr.replace(spec_chars,"")
     dfread = dfr.drop(spec_chars,axis=0)
     st.write("Removed Special Characters:")
