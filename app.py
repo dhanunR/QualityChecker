@@ -206,7 +206,7 @@ if st.button("Clean the Data",key=8):
     st.write("Checking for Null Values:")
     st.write("Removing Null Values...")
     dfr1 = dfread.drop_duplicates(keep='first')
-    dfr2 = dfr1.dropna()
+    dfr2 = dfr1.dropna(axis=0)
     st.write("Null Values Removed")
     st.write("Checking for Duplicate Values: ")
     st.write("Removing Duplicate Values... ")
