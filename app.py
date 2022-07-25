@@ -69,18 +69,7 @@ if st.button('Total Number of Unique Values:',key=1):
     st.write(read_data.nunique())
 st.markdown("---")
 
-#Removing Special Char 
-if st.button(label='Remove special character',key=10):
-    spec_chars = ["!",'"',"#","%","&","'","(",")",
-              "*","+",",","-",".","/",":",";","<",
-              "=",">","?","@","[","\\","]","^","_",
-              "`","{","|","}","~","–","$"]
-    newdata = read_data
-    #read_data = read_data.str.replace(spec_chars,"")
-    newdata = newdata.replace(spec_chars,"",regex=True).astype(float)
-    newdata = newdata.to_csv(index=False).encode('utf-8')
-    st.download_button(label="Download data as CSV",data=newdata,file_name='Specialchar.csv',mime='text/csv')
-st.markdown("---")
+
     
 
 #Checking for Null Values : 
@@ -191,21 +180,32 @@ replacevalue =newdata_value.to_csv(index=False).encode('utf-8')
 st.download_button(label="Download data as CSV",data=replacevalue,file_name='ValueReplaced.csv',mime='text/csv')
 st.markdown("---")
 
+#Removing Special Char 
+if st.button(label='Remove special character',key=10):
+    spec_chars = ["!",'"',"#","%","&","'","(",")",
+              "*","+",",","-",".","/",":",";","<",
+              "=",">","?","@","[","\\","]","^","_",
+              "`","{","|","}","~","–","$"]
+    newdata = read_data
+    #read_data = read_data.str.replace(spec_chars,"")
+    newdata = newdata.replace(spec_chars,"",regex=True).astype(float)
+    newdata = newdata.to_csv(index=False).encode('utf-8')
+    st.download_button(label="Download data as CSV",data=newdata,file_name='Specialchar.csv',mime='text/csv')
+st.markdown("---")
 
 #Data Cleaning
 if st.button("Clean the Data",key=8):
     st.write("Checking for Special Characters:")
-    spec_chars = ["!",'"',"#","%","&","'","(",")",
-              "*","+",",","-",".","/",":",";","<",
-              "=",">","?","@","[","\\","]","^","_",
-              "`","{","|","}","~","–","$",""]
-    dfr = read_data.replace(spec_chars,"")
-    cleaneddata = dfr.to_csv(index=False).encode('utf-8')
-    cleaneddata.to_csv('specialchar.csv')
+    #spec_chars = ["!",'"',"#","%","&","'","(",")",
+             # "*","+",",","-",".","/",":",";","<",
+              #"=",">","?","@","[","\\","]","^","_",
+              #"`","{","|","}","~","–","$",""]
+    #dfr = read_data.replace(spec_chars,"")
+    #cleaneddata = dfr.to_csv(index=False).encode('utf-8')
+    #cleaneddata.to_csv('specialchar.csv')
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
-    cleaneddata = pd.read_csv('specialchar.csv')
-    dfr1 = cleaneddata.dropna(axis=0)
+    dfr1 = newdata.dropna(axis=0)
     st.write("Removing Null Values...")
     st.write("Null Values Removed")
     st.write("Checking for Duplicate Values: ")
