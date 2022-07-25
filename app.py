@@ -200,7 +200,7 @@ if st.button("Clean the Data",key=8):
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–","$",""]
     dfread = dfr.replace(spec_chars,"")
-    dfread = dfread
+    dfread = dfread.dropna(axis=0)
     #dfread = dfr.drop(spec_chars,axis=0)
     st.write("Removed Special Characters:")
     st.write("Checking for Null Values:")
