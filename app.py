@@ -199,10 +199,10 @@ st.markdown("---")
     
 #Removing Special Char 
 if st.button(label='Remove special character',key=10):
-    spec_chars = ["!",'"',"#","%","&","'","(",")",
+    spec_chars = ("!",'"',"#","%","&","'","(",")",
               "*","+",",","-",".","/",":",";","<",
               "=",">","?","@","[","\\","]","^","_",
-              "`","{","|","}","~","–","$"]
+              "`","{","|","}","~","–","$")
     #newdata = read_data
     read_data = read_data.drop(spec_chars,inplace=True)
     #read_data = read_data.str.replace(spec_chars,"")
