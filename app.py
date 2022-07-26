@@ -204,7 +204,7 @@ if st.button(label='Remove special character',key=10):
               "=",">","?","@","[","\\","]","^","_",
               "`","{","|","}","~","–","$"]
     #newdata = read_data
-    read_data = read_data.drop(spec_chars,axis = 0)
+    read_data = read_data.drop(spec_chars)
     #read_data = read_data.str.replace(spec_chars,"")
     #read_data = read_data.replace(spec_chars,"")
     #read_data = read_data.dropna(axis=0)
