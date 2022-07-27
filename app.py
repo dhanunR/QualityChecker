@@ -206,10 +206,10 @@ if st.button(label='Remove special character',key=10):
     #newdata = read_data
     #read_data = read_data.drop(spec_chars,axis=1,inplace=True)
     #read_data = read_data.str.replace(spec_chars,"")
-    read_data1 = read_data.replace(["!",'"',"#","%","&","'","(",")",
+    read_data1 = read_data.replace("!",'"',"#","%","&","'","(",")",
               "*","+",",","-",".","/",":",";","<",
               "=",">","?","@","[","\\","]","^","_",
-              "`","{","|","}","~","–","$"], '', regex=True)
+              "`","{","|","}","~","–","$",'', regex=True)
     #read_data1 = read_data.replace(spec_chars,"")
     read_data1 = read_data1.dropna(axis=0)
     read_data2 = read_data1.to_csv(index=False).encode('utf-8')
