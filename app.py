@@ -199,15 +199,19 @@ st.markdown("---")
     
 #Removing Special Char 
 if st.button(label='Remove special character',key=10):
-    spec_chars = ("!",'"',"#","%","&","'","(",")",
-              "*","+",",","-",".","/",":",";","<",
-              "=",">","?","@","[","\\","]","^","_",
-              "`","{","|","}","~","–","$")
+    #spec_chars = ("!",'"',"#","%","&","'","(",")",
+             # "*","+",",","-",".","/",":",";","<",
+             # "=",">","?","@","[","\\","]","^","_",
+             # "`","{","|","}","~","–","$")
     #newdata = read_data
     #read_data = read_data.drop(spec_chars,axis=1,inplace=True)
     #read_data = read_data.str.replace(spec_chars,"")
-    read_data1 = read_data.replace(spec_chars,"")
-    #read_data = read_data.dropna(axis=0)
+    read_data1 = read_data.replace(["!",'"',"#","%","&","'","(",")",
+              "*","+",",","-",".","/",":",";","<",
+              "=",">","?","@","[","\\","]","^","_",
+              "`","{","|","}","~","–","$"]', '', regex=True)
+    #read_data1 = read_data.replace(spec_chars,"")
+    read_data1 = read_data1.dropna(axis=0)
     read_data2 = read_data1.to_csv(index=False).encode('utf-8')
     
     st.download_button(label="Download data as CSV",data=read_data2,file_name='Specialchar.csv',mime='text/csv')
