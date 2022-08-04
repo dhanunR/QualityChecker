@@ -39,7 +39,7 @@ st.markdown("---")
 
 # Dataset Shape
 st.write("Rows and Columns size : ")
-st.write(read_data.shape)
+st.text(read_data.shape)
 st.markdown("---")
 
 # Dataset Summary
