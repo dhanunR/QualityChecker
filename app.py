@@ -133,70 +133,6 @@ if st.button("Check for Completeness Ratio",key=7):
         st.text('Completeness is defined as the ratio of non-missing values to total records in dataset.')
 st.markdown("---")
 
-
-# Renaming a Column
-st.markdown('Renaming a Column')
-with st.form(key="my_form1"):
-    selectedcolumn = st.selectbox('Select the Column',options=read_data.columns)
-    newname = st.text_input("Enter the new Name: ")
-    submit_button = st.form_submit_button(label="Submit")
-    new_datarename = read_data
-    new_datarename = new_datarename.rename(columns={selectedcolumn:newname})
-renamed =new_datarename.to_csv(index=False).encode('utf-8')
-st.download_button(label="Download data as CSV",data=renamed,file_name='Renamed.csv',mime='text/csv')
-st.markdown("---")
-
-#Changing the datatype of a column
-st.markdown("Change the Datatype of a Column")
-with st.form(key="my_form3"):
-    newread_data = read_data.select_dtypes(include=['int64','float64','bool'])
-    selectedcolumn = st.selectbox('Select the Column',options=newread_data.columns)
-    datatypes = newread_data.dtypes[selectedcolumn]
-    option = st.selectbox('Select the new Datatype:',('int64','float64','bool','object'))
-    st.write('You seleccted:', option)
-    submit_button = st.form_submit_button(label="Submit")
-    newdata_datatype =  read_data
-    newdata_datatype[selectedcolumn] = newdata_datatype[selectedcolumn].astype(option)
-
-# download option
-dt = newdata_datatype.to_csv(index=False).encode('utf-8')
-st.download_button(label="Download data as CSV",data=dt,file_name='Columndatatypechanged.csv',mime='text/csv')
-st.markdown("---")
-
-
-# Replace numerical value with string
-st.markdown("Replace numerical value with string")
-with st.form(key="my_form2"):
-    selectedcolumn = st.selectbox('Select the Column',options=read_data.columns)
-    firstvalue = st.text_input(" Enter the string for 0: ")
-    secondvalue = st.text_input(" Enter the string for 1: ")
-    submit_button = st.form_submit_button(label="Submit") 
-    newdata_value = read_data   
-    newdata_value[selectedcolumn].replace(0,firstvalue,inplace=True)
-    newdata_value[selectedcolumn].replace(1,secondvalue,inplace=True)
-
-    # download option
-replacevalue =newdata_value.to_csv(index=False).encode('utf-8')
-st.download_button(label="Download data as CSV",data=replacevalue,file_name='ValueReplaced.csv',mime='text/csv')
-st.markdown("---")
-
-
-
-
-#Data Cleaning
-if st.button("Clean the Data",key=8):
-    st.write("Checking for Null Values:")
-    read_data = read_data.dropna(axis=0)
-    st.write("Removing Null Values...")
-    st.write("Null Values Removed")
-    st.write("Checking for Duplicate Values: ")
-    st.write("Removing Duplicate Values... ")
-    dfr2 = read_data.drop_duplicates(keep='first')
-    st.write("Duplicate Values Removed ")
-    dfr4 = dfr2.to_csv(index=False).encode('utf-8')
-    st.download_button(label="Download Cleaned Data",data=dfr4,file_name='CleanedData.csv',mime='text/csv')
-st.markdown("---")
-    
 #Removing Special Char 
 if st.button(label='Remove special character',key=10):
     spec_chars = ("!",'"',"#","%","&","'","(",")",
@@ -210,21 +146,87 @@ if st.button(label='Remove special character',key=10):
     st.download_button(label="Download data as CSV",data=read_data2,file_name='Specialchar.csv',mime='text/csv')
 st.markdown("---")
 
-# concatenate Two Columns
-st.markdown("Concatenate TWO columns")
-with st.form(key="new_form"):
-    #read_data1 = read_data.select_dtypes(include=['object'])
-    newread_data1 = read_data.select_dtypes(include=['object'])
-    selectedcolumn3 = st.selectbox('Select the First Column',options=newread_data1.columns)
-    selectedcolumn4 = st.selectbox('Select the Second Column',options=newread_data1.columns)
-    newcolumn = st.text_input("Enter the New Column Name:")
-    submit_button = st.form_submit_button(label="submit")
-    df_read_data = read_data
-    df_read_data[newcolumn] = df_read_data[[selectedcolumn3, selectedcolumn4]].apply(" ".join, axis=1)
-    #download option
-df1_read_data = df_read_data.to_csv(index=False).encode('utf-8')
-st.download_button(label="Download data as CSV",data=df1_read_data,file_name='Concatenate.csv',mime='text/csv')
+#Data Cleaning
+if st.button("Clean the Data",key=8):
+    st.write("Checking for Null Values:")
+    spec_chars = ("!",'"',"#","%","&","'","(",")",
+              "*","+",",","-",".","/",":",";","<",
+              "=",">","?","@","[","\\","]","^","_",
+              "`","{","|","}","~","–","$")
+    read_data2 = read_data.replace(spec_chars,np.nan)
+    read_data2 = read_data2.dropna(axis=0)
+    st.write("Removing Null Values...")
+    st.write("Null Values Removed")
+    st.write("Checking for Duplicate Values: ")
+    st.write("Removing Duplicate Values... ")
+    dfr2 = read_data2.drop_duplicates(keep='first')
+    st.write("Duplicate Values Removed ")
+    dfr4 = dfr2.to_csv(index=False).encode('utf-8')
+    st.download_button(label="Download Cleaned Data",data=dfr4,file_name='CleanedData.csv',mime='text/csv')
 st.markdown("---")
+
+
+# Renaming a Column
+#st.markdown('Renaming a Column')
+#with st.form(key="my_form1"):
+#    selectedcolumn = st.selectbox('Select the Column',options=read_data.columns)
+#    newname = st.text_input("Enter the new Name: ")
+#    submit_button = st.form_submit_button(label="Submit")
+#    new_datarename = read_data
+#    new_datarename = new_datarename.rename(columns={selectedcolumn:newname})
+#renamed =new_datarename.to_csv(index=False).encode('utf-8')
+#st.download_button(label="Download data as CSV",data=renamed,file_name='Renamed.csv',mime='text/csv')
+#st.markdown("---")
+
+#Changing the datatype of a column
+#st.markdown("Change the Datatype of a Column")
+#with st.form(key="my_form3"):
+#    newread_data = read_data.select_dtypes(include=['int64','float64','bool'])
+#    selectedcolumn = st.selectbox('Select the Column',options=newread_data.columns)
+#    datatypes = newread_data.dtypes[selectedcolumn]
+#    option = st.selectbox('Select the new Datatype:',('int64','float64','bool','object'))
+#    st.write('You seleccted:', option)
+#    submit_button = st.form_submit_button(label="Submit")
+#    newdata_datatype =  read_data
+#    newdata_datatype[selectedcolumn] = newdata_datatype[selectedcolumn].astype(option)
+
+# download option
+#dt = newdata_datatype.to_csv(index=False).encode('utf-8')
+#st.download_button(label="Download data as CSV",data=dt,file_name='Columndatatypechanged.csv',mime='text/csv')
+#st.markdown("---")
+
+
+# Replace numerical value with string
+#st.markdown("Replace numerical value with string")
+#with st.form(key="my_form2"):
+#    selectedcolumn = st.selectbox('Select the Column',options=read_data.columns)
+#    firstvalue = st.text_input(" Enter the string for 0: ")
+#    secondvalue = st.text_input(" Enter the string for 1: ")
+#    submit_button = st.form_submit_button(label="Submit") 
+#    newdata_value = read_data   
+#    newdata_value[selectedcolumn].replace(0,firstvalue,inplace=True)
+#    newdata_value[selectedcolumn].replace(1,secondvalue,inplace=True)
+
+    # download option
+#replacevalue =newdata_value.to_csv(index=False).encode('utf-8')
+#st.download_button(label="Download data as CSV",data=replacevalue,file_name='ValueReplaced.csv',mime='text/csv')
+#st.markdown("---")
+
+# concatenate Two Columns
+#st.markdown("Concatenate TWO columns")
+#with st.form(key="new_form"):
+#    #read_data1 = read_data.select_dtypes(include=['object'])
+#    newread_data1 = read_data.select_dtypes(include=['object'])
+#    selectedcolumn3 = st.selectbox('Select the First Column',options=newread_data1.columns)
+#    selectedcolumn4 = st.selectbox('Select the Second Column',options=newread_data1.columns)
+#    newcolumn = st.text_input("Enter the New Column Name:")
+#    submit_button = st.form_submit_button(label="submit")
+#    df_read_data = read_data
+#    df_read_data[newcolumn] = df_read_data[[selectedcolumn3, selectedcolumn4]].apply(" ".join, axis=1)
+#    #download option
+#df1_read_data = df_read_data.to_csv(index=False).encode('utf-8')
+#st.download_button(label="Download data as CSV",data=df1_read_data,file_name='Concatenate.csv',mime='text/csv')
+#st.markdown("---")
 
 st.subheader('> Thank you for using the Quality Checker.')
 st.subheader('Team Error Makers')
