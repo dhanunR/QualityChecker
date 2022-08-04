@@ -35,10 +35,12 @@ try:
 except:
     st.info("KINDLY UPLOAD YOUR CSV FILE !!!")
     st.stop()
+st.markdown("---")
 
 # Dataset Shape
 st.write("Rows and Columns size : ")
 st.write(read_data.shape)
+st.markdown("---")
 
 # Dataset Summary
 st.write("Descriptive Statistics of your dataset : ")
