@@ -72,8 +72,6 @@ if st.button('Total Number of Unique Values:',key=1):
 st.markdown("---")
 
 
-    
-
 #Checking for Null Values : 
 if st.button(label='Checking for Missing Values',key=2): 
     null_values = read_data.isnull().sum()/len(read_data)*100
@@ -110,7 +108,6 @@ if st.button('Checking for Duplication Rate',key=5):
     duplicate = read_data.duplicated().sum()
     duplication_ratio = round(duplicate/len(read_data),2)
     st.write("Duplication Rate for the dataset : ",duplication_ratio)
-
     st.text("There is no rule to decide the threshold for duplication rate.")
     st.text("It depends from case to case ")
 
@@ -123,6 +120,7 @@ if st.button('Click to Remove Duplicate Values',key=6):
     new_dataduplicate = new_dataduplicate.to_csv(index=False).encode('utf-8')
     st.download_button(label="Download data as CSV",data=new_dataduplicate,file_name='DuplicateRemoved.csv',mime='text/csv')
 st.markdown("---")
+
 #Check for completeness ratio
 if st.button("Check for Completeness Ratio",key=7):
     not_missing = (read_data.notnull().sum().round(2))
@@ -162,7 +160,7 @@ if st.button("Clean the Data",key=8):
     st.write("Checking for Null Values")
     st.write("Removing Null Values...")
     st.write("Null Values Removed")
-    st.write("Checking for Duplicate Values: ")
+    st.write("Checking for Duplicate Values")
     st.write("Removing Duplicate Values... ")
     dfr2 = read_data2.drop_duplicates(keep='first')
     st.write("Duplicate Values Removed ")
