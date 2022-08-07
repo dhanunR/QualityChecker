@@ -8,7 +8,7 @@ import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 
-st.title("Error Makers Quality Checker")
+st.title("Quality Checker")
 st.write("This application will allow you to upload your dataset and run a quality check on it.")
 st.markdown("---")
 
@@ -232,4 +232,4 @@ st.markdown("---")
 #st.markdown("---")
 
 st.subheader('> Thank you for using the Quality Checker.')
-st.subheader('Team Error Makers')
+st.subheader('Dhanun R Nair')
