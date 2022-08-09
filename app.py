@@ -226,7 +226,7 @@ with st.form(key="new_form"):
     submit_button = st.form_submit_button(label="submit")
     df_read_data = read_data
     df_read_data[newcolumn] = df_read_data[[selectedcolumn3, selectedcolumn4]].apply(" ".join, axis=1)
-    df.insert(2, 'newcolumn')
+    df_read_data.insert(2, newcolumn)
 #download option
 df1_read_data = df_read_data.to_csv(index=False).encode('utf-8')
 st.download_button(label="Download data as CSV",data=df1_read_data,file_name='Concatenate.csv',mime='text/csv')
