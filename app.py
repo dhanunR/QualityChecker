@@ -181,7 +181,7 @@ renamed =new_datarename.to_csv(index=False).encode('utf-8')
 st.download_button(label="Download data as CSV",data=renamed,file_name='Renamed.csv',mime='text/csv')
 st.markdown("---")
 
-Changing the datatype of a column
+#Changing the datatype of a column
 st.markdown("Change the Datatype of a Column")
 with st.form(key="my_form3"):
     newread_data = read_data.select_dtypes(include=['int64','float64','bool'])
