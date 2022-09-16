@@ -23,6 +23,9 @@ if upload_data is not None:
     read_data = pd.read_csv(upload_data, encoding='latin-1',on_bad_lines='skip')
 
 
+st.subheader('Data Quality Dashboard')
+st.progress(
+
 # Looking at your dataset
 st.write("Dataset Overview : ")
 try:
@@ -76,7 +79,7 @@ st.markdown("---")
 if st.button(label='Checking for Missing Values',key=2): 
     null_values = read_data.isnull().sum()/len(read_data)*100
     missing = null_values.sum().round(2)
-    st.write(read_data.isnull().sum())
+    st.write(read_data.isnull().sum())* 100 / len(df)
     if missing >=30:
         st.error("Poor Data Quality : more than 30 percent of missing values !")
     else:
