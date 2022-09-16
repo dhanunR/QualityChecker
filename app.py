@@ -24,7 +24,7 @@ if upload_data is not None:
 
 
 st.subheader('Data Quality Dashboard')
-st.progress(
+st.progress(null_values)
 
 # Looking at your dataset
 st.write("Dataset Overview : ")
@@ -79,7 +79,7 @@ st.markdown("---")
 if st.button(label='Checking for Missing Values',key=2): 
     null_values = read_data.isnull().sum()/len(read_data)*100
     missing = null_values.sum().round(2)
-    st.write(read_data.isnull().sum())* 100 / len(df)
+    st.write(read_data.isnull().sum())
     if missing >=30:
         st.error("Poor Data Quality : more than 30 percent of missing values !")
     else:
