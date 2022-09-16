@@ -233,6 +233,5 @@ st.markdown("---")
 #df1_read_data = df_read_data.to_csv(index=False).encode('utf-8')
 #st.download_button(label="Download data as CSV",data=df1_read_data,file_name='Concatenate.csv',mime='text/csv')
 #st.markdown("---")
-
 st.subheader('> Thank you for using the Quality Checker.')
 st.subheader('Dhanun R Nair')
