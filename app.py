@@ -24,6 +24,7 @@ if upload_data is not None:
 
 
 st.subheader('Data Quality Dashboard')
+null_values = read_data.isnull().sum()/len(read_data)*100
 st.progress(null_values)
 
 # Looking at your dataset
