@@ -216,23 +216,23 @@ st.download_button(label="Download data as CSV",data=replacevalue,file_name='Val
 st.markdown("---")
 
 # concatenate Two Columns
-"""st.markdown("Concatenate TWO columns")
-with st.form(key="new_form"):
-    read_data1 = read_data.select_dtypes(include=['object'])
-    newread_data1 = read_data.select_dtypes(include=['object'])
-    selectedcolumn3 = st.selectbox('Select the First Column',options=newread_data1.columns)
-    selectedcolumn4 = st.selectbox('Select the Second Column',options=newread_data1.columns)
-    newcolumn = st.text_input("Enter the New Column Name:")
-    submit_button = st.form_submit_button(label="submit")
-    df_read_data = read_data
-    df_read_data[newcolumn] = df_read_data[[selectedcolumn3, selectedcolumn4]].apply(" ".join, axis=1)
-    first_column = df_read_data.pop(newcolumn)
-    row_number = st.number_input("Enter the location of the new column")
-    df_read_data.insert(row_number, newcolumn, first_column)
+#st.markdown("Concatenate TWO columns")
+#with st.form(key="new_form"):
+#    read_data1 = read_data.select_dtypes(include=['object'])
+#    newread_data1 = read_data.select_dtypes(include=['object'])
+#    selectedcolumn3 = st.selectbox('Select the First Column',options=newread_data1.columns)
+#    selectedcolumn4 = st.selectbox('Select the Second Column',options=newread_data1.columns)
+#    newcolumn = st.text_input("Enter the New Column Name:")
+#    submit_button = st.form_submit_button(label="submit")
+#    df_read_data = read_data
+#   df_read_data[newcolumn] = df_read_data[[selectedcolumn3, selectedcolumn4]].apply(" ".join, axis=1)
+#    first_column = df_read_data.pop(newcolumn)
+#    row_number = st.number_input("Enter the location of the new column")
+#    df_read_data.insert(row_number, newcolumn, first_column)
 #download option
-df1_read_data = df_read_data.to_csv(index=False).encode('utf-8')
-st.download_button(label="Download data as CSV",data=df1_read_data,file_name='Concatenate.csv',mime='text/csv')
-st.markdown("---")"""
+#df1_read_data = df_read_data.to_csv(index=False).encode('utf-8')
+#st.download_button(label="Download data as CSV",data=df1_read_data,file_name='Concatenate.csv',mime='text/csv')
+#st.markdown("---")
 
 st.subheader('> Thank you for using the Quality Checker.')
 st.subheader('Dhanun R Nair')
