@@ -216,7 +216,7 @@ st.download_button(label="Download data as CSV",data=replacevalue,file_name='Val
 st.markdown("---")
 
 # concatenate Two Columns
-st.markdown("Concatenate TWO columns")
+"""st.markdown("Concatenate TWO columns")
 with st.form(key="new_form"):
     read_data1 = read_data.select_dtypes(include=['object'])
     newread_data1 = read_data.select_dtypes(include=['object'])
@@ -232,7 +232,7 @@ with st.form(key="new_form"):
 #download option
 df1_read_data = df_read_data.to_csv(index=False).encode('utf-8')
 st.download_button(label="Download data as CSV",data=df1_read_data,file_name='Concatenate.csv',mime='text/csv')
-st.markdown("---")
+st.markdown("---")"""
 
 st.subheader('> Thank you for using the Quality Checker.')
 st.subheader('Dhanun R Nair')
