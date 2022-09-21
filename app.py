@@ -28,13 +28,7 @@ if upload_data is not None:
 #st.progress(null_values)
 st.markdown("---")
 
-#percentage
-#st.write("Dataset Overview percentage: ")
-#st.subheader('Data Quality percentage: ')
-#null_values = read_data.isnull().sum()/len(read_data)*100
-#missing = null_values.sum().round(2)
-#st.progress(null_values)
-# Looking at your dataset
+
 st.write("Dataset Overview : ")
 try:
     number_of_rows = st.slider("No of rows:",5,10)
@@ -47,6 +41,14 @@ except:
     st.info("KINDLY UPLOAD YOUR CSV FILE !!!")
     st.stop()
 st.markdown("---")
+
+percentage
+st.write("Dataset Overview percentage: ")
+st.subheader('Data Quality percentage: ')
+null_values = read_data.isnull().sum()/len(read_data)*100
+missing = null_values.sum().round(2)
+st.progress(null_values)
+# Looking at your dataset
 
 # Dataset Shape
 st.write("Rows and Columns size : ")
