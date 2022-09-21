@@ -22,11 +22,17 @@ upload_data = st.file_uploader("Choose a CSV file", type = ['CSV'])
 if upload_data is not None:
     read_data = pd.read_csv(upload_data, encoding='latin-1',on_bad_lines='skip')
 
-read_data = read_data
-st.subheader('Data Quality Dashboard')
-null_values = read_data.isnull().sum()/len(read_data)*100
-st.progress(null_values)
+#read_data = read_data
+#st.subheader('Data Quality Dashboard')
+#null_values = read_data.isnull().sum()/len(read_data)*100
+#st.progress(null_values)
 
+#percentage
+st.write("Dataset Overview percentage: ")
+try:
+    st.subheader('Data Quality percentage: ")
+    null_values = read_data.isnull().sum()/len(read_data)*100
+    st.progress(null_values)
 # Looking at your dataset
 st.write("Dataset Overview : ")
 try:
