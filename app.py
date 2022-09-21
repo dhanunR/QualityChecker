@@ -46,8 +46,8 @@ st.markdown("---")
 st.write("Dataset Overview percentage: ")
 st.subheader('Data Quality percentage: ')
 null_values = read_data.isnull().sum()/len(read_data)*100
-    missing = null_values.sum().round(2)
-    st.progress(missing)
+missing = null_values.sum().round(2)
+st.progress(missing)
 # Looking at your dataset
 
 # Dataset Shape
