@@ -61,7 +61,6 @@ duplicate = read_data.duplicated().sum()
 st.write(duplicate)
 row = read_data.shape[0]
 my_bar = st.progress(0)
-duplicate = row - duplicate
 for percent_complete in range(row):
     my_bar.progress(duplicate)
 
