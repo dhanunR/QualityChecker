@@ -53,7 +53,7 @@ st.write(missing)
 my_bar = st.progress(0)
 for percent_complete in range(100):
     my_bar.progress(missing)
-    st.progress(missing)
+    #st.progress(missing)
 # Looking at your dataset
 
 # Dataset Shape
