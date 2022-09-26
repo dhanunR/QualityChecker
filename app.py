@@ -42,7 +42,7 @@ except:
     st.stop()
 st.markdown("---")
 
-#percentage
+#percentage of Null values
 st.write("Dataset Overview percentage: ")
 st.subheader('Data Null value percentage: ')
 null_values = read_data.isnull().sum()/len(read_data)*100
@@ -54,7 +54,11 @@ my_bar = st.progress(0)
 for percent_complete in range(100):
     my_bar.progress(missing)
     #st.progress(missing)
-# Looking at your dataset
+
+#percentage of duplicate values
+st.subheader('Data Duplicate value percentage:')
+duplicate = read_data.duplicated().sum()
+st.write(duplicate)
 
 # Dataset Shape
 st.write("Rows and Columns size : ")
