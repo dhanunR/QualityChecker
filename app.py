@@ -50,10 +50,10 @@ missing = null_values.sum().round(2)
 missing = int(missing)
 st.write(missing)
 #st.write(read_data.isnull().sum())
-#my_bar = st.progress(0)
-#for percent_complete in range(100):
-#    my_bar.progress(missing)
-#st.progress(missing)
+my_bar = st.progress(0)
+for percent_complete in range(100):
+    my_bar.progress(missing)
+    st.progress(missing-100)
 # Looking at your dataset
 
 # Dataset Shape
