@@ -47,7 +47,12 @@ st.write("Dataset Overview percentage: ")
 st.subheader('Data Null value percentage: ')
 null_values = read_data.isnull().sum()/len(read_data)*100
 missing = null_values.sum().round(2)
-st.write(read_data.isnull().sum())
+missing = int(missing)
+st.write(missing)
+#st.write(read_data.isnull().sum())
+#my_bar = st.progress(0)
+#for percent_complete in range(100):
+#    my_bar.progress(missing)
 #st.progress(missing)
 # Looking at your dataset
 
