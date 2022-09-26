@@ -58,11 +58,12 @@ for percent_complete in range(100):
 #percentage of duplicate values
 st.subheader('Data Duplicate value percentage:')
 duplicate = read_data.duplicated().sum()
+duplicate = int(duplicate)
 st.write(duplicate)
 row = read_data.shape[0]
-my_bar = st.progress(0)
+my_bar1 = st.progress(0)
 for percent_complete in range(row):
-    my_bar.progress(duplicate)
+    my_bar1.progress(duplicate)
 
 # Dataset Shape
 st.write("Rows and Columns size : ")
