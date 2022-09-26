@@ -62,7 +62,7 @@ duplicate = int(duplicate)
 st.write(duplicate)
 row = read_data.shape[0]
 my_bar1 = st.progress(0)
-for percent_complete in range(row):
+for percent_complete in range(100):
     my_bar1.progress(duplicate)
 
 # Dataset Shape
