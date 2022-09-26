@@ -60,10 +60,10 @@ st.subheader('Data Duplicate value percentage:')
 duplicate = read_data.duplicated().sum()
 st.write(duplicate)
 row = read_data.shape[0]
-st.write(row)
 my_bar = st.progress(0)
+duplicate = row - duplicate
 for percent_complete in range(row):
-    my_bar.progress(missing)
+    my_bar.progress(duplicate)
 
 # Dataset Shape
 st.write("Rows and Columns size : ")
