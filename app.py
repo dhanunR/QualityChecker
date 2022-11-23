@@ -140,7 +140,7 @@ with st.form(key="my_form3"):
     new_data=read_data.fillna(newvalue)
 new_data = new_data 
 renamed =new_data.to_csv(index=False).encode('utf-8')
-st.download_button(label="Download data as CSV",data=new_data,file_name='Newvalueadded.csv',mime='text/csv')
+st.download_button(label="Download data as CSV",data=renamed,file_name='Newvalueadded.csv',mime='text/csv')
     
     
 # Check for duplication
