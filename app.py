@@ -138,7 +138,9 @@ with st.form(key="my_form3"):
     newvalue = st.text_input("Enter the new Value: ")
     submit_button = st.form_submit_button(label="Submit")
     new_data=read_data.fillna(newvalue)
-    st.download_button(label="Download data as CSV",data=new_data,file_name='Newvalueadded.csv',mime='text/csv')
+new_data = new_data 
+renamed =new_data.to_csv(index=False).encode('utf-8')
+st.download_button(label="Download data as CSV",data=new_data,file_name='Newvalueadded.csv',mime='text/csv')
     
     
 # Check for duplication
