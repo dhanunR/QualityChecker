@@ -131,6 +131,12 @@ new_data = new_data
 st.download_button(label="Download data as CSV",data=new_data,file_name='SNullValuesRemoved.csv',mime='text/csv')
 st.markdown("---")
     
+
+# filling the Null value columns
+if st.markdown('click to fill the null columns with a value')
+    newvalue = st.text_input("Enter the new Value: ")
+    new_data=read_data.fillna(0)
+    st.download_button(label="Download data as CSV",data=new_data,file_name='Newvalueadded.csv',mime='text/csv')
 # Check for duplication
 if st.button('Checking for Duplication Rate',key=5): 
     duplicate = read_data.duplicated().sum()
