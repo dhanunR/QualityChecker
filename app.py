@@ -133,7 +133,8 @@ st.markdown("---")
     
 
 # filling the Null value columns
-if st.markdown('click to fill the null columns with a value')
+st.markdown('click to fill the null columns with a value')
+with st.form(key="my_form0"):
     newvalue = st.text_input("Enter the new Value: ")
     new_data=read_data.fillna(0)
     st.download_button(label="Download data as CSV",data=new_data,file_name='Newvalueadded.csv',mime='text/csv')
