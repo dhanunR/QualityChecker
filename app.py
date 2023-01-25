@@ -7,6 +7,8 @@ import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
+from pyspark.sql import SparkSession
+
 
 st.title("Quality Checker")
 st.write("This application will allow you to upload your dataset and run a quality check on it.")
@@ -41,6 +43,10 @@ except:
     st.info("KINDLY UPLOAD YOUR CSV FILE !!!")
     st.stop()
 st.markdown("---")
+
+st.write("Dataset Column : ")
+columns = df.columns
+st.write(columns)
 
 #percentage of Null values
 st.write("Dataset Overview percentage: ")
