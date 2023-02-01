@@ -7,11 +7,11 @@ import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
+from pyspark import SparkConf
+from pyspark.sql import SparkSession
 
 
 # Create SparkSession from builder
-import pyspark
-from pyspark.sql import SparkSession
 spark = SparkSession.builder.master("local[1]") \
                     .appName('SparkByExamples.com') \
                     .getOrCreate()
