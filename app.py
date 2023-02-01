@@ -229,7 +229,7 @@ st.markdown("---")
 
 #Changing the datatype of a column
 st.markdown("Change the Datatype of a Column")
-with st.form(key="my_form3"):
+with st.form(key="my_form7"):
     newread_data = read_data.select_dtypes(include=['int64','float64','bool'])
     selectedcolumn = st.selectbox('Select the Column',options=newread_data.columns)
     datatypes = newread_data.dtypes[selectedcolumn]
