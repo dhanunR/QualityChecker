@@ -44,9 +44,9 @@ except:
     st.stop()
 st.markdown("---")
 
-st.write("Dataset Column : ")
-columns = df.columns
-st.write(columns)
+#st.write("Dataset Column : ")
+#columns = df.columns
+#st.write(columns)
 
 #percentage of Null values
 st.write("Dataset Overview percentage: ")
